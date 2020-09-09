@@ -72,3 +72,86 @@ LANGUAGES = [
     {'language': 'zh-tw', 'label': 'Traditional Chinese (TW)', 'source': True, 'destination': True},
     {'language': 'nl', 'label': 'Dutch', 'source': True, 'destination': True}
 ]
+
+# media required fields
+VALIDATOR_MEDIA_METADATA = {
+    "headline": {
+        "required": True,
+    },
+    "alt_text": {
+        "required": False,
+    },
+    "archive_description": {
+        "required": False,
+    },
+    "description_text": {
+        "required": True,
+        "textarea": True,
+    },
+    "copyrightholder": {
+        "required": False,
+    },
+    "byline": {
+        "required": False,
+    },
+    "usageterms": {
+        "required": False,
+    },
+    "copyrightnotice": {
+        "required": False,
+    },
+}
+
+# schema for images, video, audio
+SCHEMA = {
+    'picture': {
+        'headline': {'required': True},
+        'description_text': {'required': True},
+        'alt_text': {'required': False},
+        'byline': {'required': False},
+        'sign_off': {'required': False}
+    },
+    'video': {
+        'headline': {'required': False},
+        'description_text': {'required': True},
+        'byline': {'required': False},
+        'sign_off': {'required': False}
+    },
+    'graphic': {
+        'headline': {'required': False},
+        'description_text': {'required': True},
+        'byline': {'required': False},
+        'sign_off': {'required': False}
+    },
+}
+
+
+# editor for images, video, audio
+EDITOR = {
+    'picture': {
+        'headline': {'order': 1, 'sdWidth': 'full'},
+        'description_text': {'order': 2, 'sdWidth': 'full', 'textarea': True},
+        'byline': {'order': 3, 'sdWidth': 'full'},
+        'sign_off': {'displayOnMediaEditor': False},
+        'archive_description': {'displayOnMediaEditor': False}
+    },
+    'video': {
+        'slugline': {'order': 1, 'sdWidth': 'full'},
+        'headline': {'order': 2, 'sdWidth': 'full'},
+        'description_text': {'order': 3, 'sdWidth': 'full', 'textarea': True},
+        'media_type': {'order': 4, 'sdWidth': 'full'},
+        'byline': {'order': 5, 'sdWidth': 'full'},
+        'sign_off': {'displayOnMediaEditor': False},
+        'archive_description': {'displayOnMediaEditor': False}
+    },
+    'graphic': {
+        'headline': {'order': 1, 'sdWidth': 'full'},
+        'description_text': {'order': 2, 'sdWidth': 'full', 'textarea': True},
+        'byline': {'order': 3, 'sdWidth': 'full'},
+        'sign_off': {'displayOnMediaEditor': False},
+        'archive_description': {'displayOnMediaEditor': False}
+    },
+}
+
+SCHEMA['audio'] = SCHEMA['video']
+EDITOR['audio'] = EDITOR['video']
